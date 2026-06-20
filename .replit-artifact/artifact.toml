@@ -1,0 +1,27 @@
+kind = "mobile"
+previewPath = "/phantom-mobile/"
+title = "PHANTOM Mobile"
+version = "1.0.0"
+id = "artifacts/phantom-mobile"
+router = "expo-domain"
+
+[[integratedSkills]]
+name = "expo"
+version = "1.0.0"
+
+[[services]]
+ensurePreviewReachable = "/status"
+name = "expo"
+paths = [ "/phantom-mobile/" ]
+localPort = 26255
+
+[services.development]
+run = "pnpm --filter @workspace/phantom-mobile run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/phantom-mobile", "run", "build" ]
+run = [ "pnpm", "--filter", "@workspace/phantom-mobile", "run", "serve" ]
+
+[services.env]
+PORT = "26255"
+BASE_PATH = "/phantom-mobile/"
